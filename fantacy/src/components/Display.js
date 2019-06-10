@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import {select} from '../actions/Index'
+import {select,players} from '../actions/Index'
 
 class Display extends Component {
     state={
@@ -50,7 +50,11 @@ class Display extends Component {
         <div className="card-body text-justify">
           <h5 className="card-title">{data.name}</h5>
           <p className="card-text">{data.pos} - {data.team}</p>
-          <a href="#" className="btn btn-primary">Points {data.point}</a>
+          <a href="#" className="btn btn-primary" onClick={()=>{ 
+            this.props.select(this.props.play.point-data.point)
+            this.props.players(data)
+            
+            }}>Points {data.point}</a>
         </div>
       </div>     
       )):null
@@ -62,11 +66,16 @@ class Display extends Component {
         <div className="card-body text-justify">
           <h5 className="card-title">{data.name}</h5>
           <p className="card-text">{data.pos} - {data.team}</p>
-          <a href="#" className="btn btn-primary">Points {data.point}</a>
+          <a href="#" className="btn btn-primary" onClick={()=>{ 
+            this.props.select(this.props.play.point-data.point)
+            this.props.players(data)
+            
+            }}>Points {data.point}</a>
         </div>
       </div>         
       )):null
     )
+  
     renderall=()=>(
       this.state.all.data?this.state.all.data.map((data,ind)=>(
         <div className="card col-2" style={{width:'15rem',margin:'1rem'}}>
@@ -74,7 +83,11 @@ class Display extends Component {
         <div className="card-body text-justify">
           <h5 className="card-title">{data.name}</h5>
           <p className="card-text">{data.pos} - {data.team}</p>
-          <a href="#" className="btn btn-primary">Points {data.point}</a>
+          <a href="#" className="btn btn-primary" onClick={()=>{ 
+            this.props.select(this.props.play.point-data.point)
+            this.props.players(data)
+            
+            }}>Points {data.point}</a>
         </div>
       </div>         
       )):null
@@ -86,7 +99,11 @@ class Display extends Component {
         <div className="card-body text-justify">
           <h5 className="card-title">{data.name}</h5>
           <p className="card-text">{data.pos} - {data.team}</p>
-          <a href="#" className="btn btn-primary">Points {data.point}</a>
+          <a href="#" className="btn btn-primary" onClick={()=>{ 
+            this.props.select(this.props.play.point-data.point)
+            this.props.players(data)
+            
+            }}>Points {data.point}</a>
         </div>
       </div>           
       )):null
@@ -94,20 +111,20 @@ class Display extends Component {
     render(){
     
     return (
-      <div classNameName="container">
-        <button className="btn btn-dark">Batsmen</button><br/>
+      <div classNameName="container"><br/>
+        <button className="btn btn-dark"><h1 className="display-3">Batsmen</h1></button><br/>
         <div className="row">
        {this.renderbat()}
        </div>
-       <button className="btn btn-dark">Bowlers</button><br/>
+       <button className="btn btn-dark"><h1 className="display-3">Bowlers</h1></button><br/>
        <div className="row">
        {this.renderbow()}
        </div>
-       <button className="btn btn-dark">All rounders</button><br/>
+       <button className="btn btn-dark"><h1 className="display-3">All rounders</h1></button><br/>
        <div className="row">
        {this.renderall()}
        </div>
-       <button className="btn btn-dark">Wicker Keeper</button><br/>
+       <button className="btn btn-dark"><h1 className="display-3">Wicker Keeper</h1></button><br/>
        <div className="row">
        {this.renderwc()}
        </div>
@@ -121,5 +138,5 @@ class Display extends Component {
     }
   }
   
-  export default connect(mapStateToProps,{select})(Display);
+  export default connect(mapStateToProps,{select,players})(Display);
   

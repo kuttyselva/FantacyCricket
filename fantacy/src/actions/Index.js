@@ -15,3 +15,9 @@ export const select=(data)=>{
         payload:data
     }
 }
+export const players=(data)=>{
+    return{
+        type:'GET_SELECT',
+        payload:data
+    }
+}
