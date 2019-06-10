@@ -70,8 +70,8 @@ app.get('/all',(req,res)=>{
 
 
 app.get('/aa',(req,res)=>{
-    const {first,email,pno} =req.query;
-    const Ins=`INSERT INTO users (first,email,pno) VALUES('${first}','${email}','${pno}')`;
+    const {name,pos,img,team,point} =req.query;
+    const Ins=`INSERT INTO players (name,pos,team,img,point) VALUES('${name}','${pos}','${team}','${img}','${point}')`;
     connection.query(Ins,(err,result)=>{
         if(err){
             return res.send(err);
