@@ -5,6 +5,7 @@ import Display from './components/Display';
 import {connect} from 'react-redux'
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import AddPlayer from './components/AddPlayer';
+import Selected from './components/Selected';
 
 class App extends Component {
  
@@ -12,7 +13,7 @@ class App extends Component {
    
   return (
    <div>
-    
+        <Router>
      <Header/>
      {!this.props.auth.isSignedIn?
     <div className="center-div ">
@@ -21,13 +22,14 @@ class App extends Component {
       <img  src="https://i.pinimg.com/originals/8b/44/51/8b4451665d6b2139e29f29b51ffb1829.png" width="300px" alt=""/>
       </div>
     </div> :
-    <Router>
+<div>
     <Route exact path ='/' component={Display}/>
     <Route exact path ='/add' component={AddPlayer}/>
-    </Router>
+    <Route exact path ='/select' component={Selected}/>
+    </div>
     }
          
-        
+         </Router>
    </div>
   );
   }
